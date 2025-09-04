@@ -64,7 +64,7 @@ export default function CreateTokenPage() {
             <p className="mb-4">Connect your wallet to create a token.</p>
             <button
               onClick={connectWallet}
-              className="bg-blue-500 hover:bg-blue-400 px-6 py-2 rounded-lg text-md font-medium"
+              className="bg-blue-800 hover:bg-blue-900 px-6 py-2 rounded-lg text-md font-medium"
             >
               Connect Wallet
             </button>
@@ -179,7 +179,7 @@ export default function CreateTokenPage() {
             {/* Submit */}
             <button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-bold text-lg transition transform hover:scale-105"
+              className="w-full bg-blue-800 hover:bg-blue-900 text-white py-3 rounded-lg font-bold text-lg transition transform hover:scale-105"
             >
               Create Token
             </button>

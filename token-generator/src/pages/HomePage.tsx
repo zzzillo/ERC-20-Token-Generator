@@ -23,7 +23,7 @@ export default function HomePage() {
                 <p className="mt-4 text-xl text-gray-200 max-w-2xl">
                     Easily create your own ERC-20 token with full configuration options.
                 </p>
-                <button onClick={() => navigate("/create")} className="mt-8 px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white text-lg font-semibold rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105">
+                <button onClick={() => navigate("/create")} className="mt-8 px-6 py-3 bg-blue-800 hover:bg-blue-900 text-white text-lg font-semibold rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105">
                     Create a Token
                 </button>
             </div>

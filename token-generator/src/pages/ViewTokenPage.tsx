@@ -43,17 +43,17 @@ export default function ViewTokenPage() {
 
         <div className="w-full overflow-x-auto">
           <table className="min-w-full table-auto border border-gray-700 rounded-lg overflow-hidden">
-            <thead className="bg-gray-800">
+            <thead className="bg-blue-800">
               <tr>
-                <th className="px-6 py-3 text-left text-gray-200">Name</th>
-                <th className="px-6 py-3 text-left text-gray-200">Symbol</th>
-                <th className="px-6 py-3 text-left text-gray-200">Decimals</th>
-                <th className="px-6 py-3 text-left text-gray-200">Total Supply</th>
-                <th className="px-6 py-3 text-left text-gray-200">Features</th>
-                <th className="px-6 py-3 text-left text-gray-200">Contract Address</th>
+                <th className="px-6 py-3 text-left">Name</th>
+                <th className="px-6 py-3 text-left">Symbol</th>
+                <th className="px-6 py-3 text-left">Decimals</th>
+                <th className="px-6 py-3 text-left">Total Supply</th>
+                <th className="px-6 py-3 text-left">Features</th>
+                <th className="px-6 py-3 text-left">Contract Address</th>
               </tr>
             </thead>
-            <tbody className="bg-[#1e1e1e]">
+            <tbody>
               {tokens.map((token, index) => (
                 <tr key={index} className="border-b border-gray-700 hover:bg-gray-900 transition">
                   <td className="px-6 py-4">{token.name}</td>
