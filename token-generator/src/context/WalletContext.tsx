@@ -1,13 +1,16 @@
-import { createContext, useState, useEffect } from "react"
-import type {ReactNode} from "react"
-import { ethers } from "ethers";
+import { createContext, useState, useEffect } from "react";
+import type { ReactNode } from "react";
+import { createWalletClient, custom } from "viem";
+import { mainnet } from "viem/chains";
 
+// Context type
 interface WalletContextType {
   account: string | null;
   connectWallet: () => void;
   disconnectWallet: () => void;
 }
 
+// Create context
 export const WalletContext = createContext<WalletContextType>({
   account: null,
   connectWallet: () => {},
@@ -17,12 +20,17 @@ export const WalletContext = createContext<WalletContextType>({
 export function WalletProvider({ children }: { children: ReactNode }) {
   const [account, setAccount] = useState<string | null>(null);
 
+  // Connect wallet
   const connectWallet = async () => {
-    if ((window as any).ethereum) {
+    if (typeof window !== "undefined" && (window as any).ethereum) {
       try {
-        const provider = new ethers.BrowserProvider((window as any).ethereum);
-        const accounts = await provider.send("eth_requestAccounts", []);
-        setAccount(accounts[0]);
+        const client = createWalletClient({
+          chain: mainnet,
+          transport: custom((window as any).ethereum),
+        });
+
+        const [address] = await client.requestAddresses();
+        setAccount(address);
       } catch (err) {
         console.error("User rejected or error:", err);
       }
@@ -31,18 +39,24 @@ export function WalletProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  // Disconnect wallet
   const disconnectWallet = () => {
     setAccount(null);
   };
 
+  // Watch account changes using Ethereum provider
   useEffect(() => {
-    if ((window as any).ethereum) {
+    if (typeof window !== "undefined" && (window as any).ethereum) {
       const handleAccountsChanged = (accounts: string[]) => {
-        if (accounts.length > 0) setAccount(accounts[0]);
-        else setAccount(null);
+        if (accounts.length > 0) {
+          setAccount(accounts[0]);
+        } else {
+          setAccount(null);
+        }
       };
 
       (window as any).ethereum.on("accountsChanged", handleAccountsChanged);
+
       return () => {
         (window as any).ethereum.removeListener(
           "accountsChanged",

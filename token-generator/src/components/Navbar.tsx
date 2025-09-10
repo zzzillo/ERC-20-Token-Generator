@@ -19,10 +19,13 @@ export default function Navbar() {
       {/* Menu */}
       <div className="flex items-center space-x-10">
         <Link to="/create" className="text-lg font-medium hover:text-blue-800">
-          Create Token
+          Create
         </Link>
         <Link to="/tokens" className="text-lg font-medium hover:text-blue-800">
-          Tokens Created
+          Interact
+        </Link>
+        <Link to="/viewtokens" className="text-lg font-medium hover:text-blue-800">
+          View
         </Link>
 
         {account ? (

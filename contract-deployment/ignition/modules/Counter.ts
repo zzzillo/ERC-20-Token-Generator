@@ -1,11 +1,7 @@
 import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 
-export default buildModule("CounterModule", (m) => {
-  const counter = m.contract("Counter");
+export default buildModule("TokenFactoryModule", (m) => {
+  const tokenFactory = m.contract("TokenFactory");
 
-  m.call(counter, "incBy", [5n], { id: "IncrementBy" });
-  m.call(counter, "inc", [], { id: "IncrementBy5" });
-  m.call(counter, "inc", [], { id: "IncrementBy10" });
-  
-  return { counter };
+  return { tokenFactory };
 });

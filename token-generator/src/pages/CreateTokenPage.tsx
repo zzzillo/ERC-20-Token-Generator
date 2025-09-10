@@ -132,38 +132,13 @@ export default function CreateTokenPage() {
             </div>
 
             {/* Features */}
+            {/* Features */}
             <div>
               <label className="block text-gray-300 mb-4 font-semibold">
                 Extra Features
               </label>
               <div className="grid grid-cols-2 gap-4">
-                <label className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    name="mintable"
-                    checked={form.mintable}
-                    onChange={handleChange}
-                  />
-                  <span>Mintable</span>
-                </label>
-                <label className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    name="burnable"
-                    checked={form.burnable}
-                    onChange={handleChange}
-                  />
-                  <span>Burnable</span>
-                </label>
-                <label className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    name="pausable"
-                    checked={form.pausable}
-                    onChange={handleChange}
-                  />
-                  <span>Pausable</span>
-                </label>
+                {/* Ownable */}
                 <label className="flex items-center space-x-2">
                   <input
                     type="checkbox"
@@ -173,8 +148,49 @@ export default function CreateTokenPage() {
                   />
                   <span>Ownable</span>
                 </label>
+                {/* Mintable */}
+                <label className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    name="mintable"
+                    checked={form.mintable}
+                    onChange={handleChange}
+                    disabled={!form.ownable} // disable if Ownable is not checked
+                    className={!form.ownable ? "cursor-not-allowed opacity-50" : ""}
+                  />
+                  <span>Mintable</span>
+                </label>
+
+                {/* Burnable (independent) */}
+                <label className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    name="burnable"
+                    checked={form.burnable}
+                    onChange={handleChange}
+                    disabled={!form.ownable} // disable if Ownable is not checked
+                    className={!form.ownable ? "cursor-not-allowed opacity-50" : ""}
+                  />
+                  <span>Burnable</span>
+                </label>
+
+                {/* Pausable */}
+                <label className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    name="pausable"
+                    checked={form.pausable}
+                    onChange={handleChange}
+                    disabled={!form.ownable} // disable if Ownable is not checked
+                    className={!form.ownable ? "cursor-not-allowed opacity-50" : ""}
+                  />
+                  <span>Pausable</span>
+                </label>
+
+                
               </div>
             </div>
+
 
             {/* Submit */}
             <button
